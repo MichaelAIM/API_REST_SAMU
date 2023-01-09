@@ -1,0 +1,19 @@
+[req]
+distinguished_name = req_distinguished_name
+x509_extensions = v3_req
+prompt = no
+[req_distinguished_name]
+C = CL
+ST = ARICA
+L = ARICA
+O = AIM
+OU = samu
+CN = localhost:8000
+[v3_req]
+keyUsage = critical, digitalSignature, keyAgreement
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = localhost:8000
+DNS.2 = 127.0.0.1:8000
+DNS.3 = localhost
