@@ -64,13 +64,12 @@ export const postTurno = async( req: Request, res: Response) => {
             if( turno ){
                 await turno.update({estadoId:3});
             }
-            console.log(body.turnoAnterior);
+            // console.log(body.turnoAnterior);
         }
         const nuevoTurno:any = await Turno.create( { responsable: body.resp } );
         for (let i = 0; i < body.funcTurno.length; i++) {
-            let element = await tripulacionTurno.create({idTurno:nuevoTurno.id, idFuncionario: body.funcTurno[i].Funcionario.id, idTipoFuncionario: body.funcTurno[i].Funcionario.idRol});
+            let element = await tripulacionTurno.create({idTurno:nuevoTurno.id, idFuncionario: body.funcTurno[i].idFuncionario, idTipoFuncionario: body.funcTurno[i].idTipoFuncionario});
         }
-
         res.json({
             msg: 'Post Ambulancias',
             body

@@ -18,6 +18,9 @@ const tripulacionTurno = db.define('tripulacionTurno', {
     },
     idTipoFuncionario:{
         type: DataTypes.INTEGER
+    },
+    idAmbulancia:{
+        type: DataTypes.INTEGER
     }
 });
 

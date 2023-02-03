@@ -140,7 +140,7 @@ export const postSolicitud = async( req: Request, res: Response) => {
     const { body } = req;
     console.log( body );
     try {
-        const solicitud = await Solicitud.create(body);
+        let solicitud = await Solicitud.create(body);
         res.json({
             solicitud
         });
@@ -194,7 +194,7 @@ export const CloseSolicitud = async( req: Request, res: Response) => {
         }
         await solicitud.update({ estadoId: 3, motivo_cierre: body.motivoCierre, resp_cierra: body.resp});
         console.log(solicitud);
-         res.json( solicitud );
+        res.json( solicitud );
 
     } catch (error) {
         console.log(error);

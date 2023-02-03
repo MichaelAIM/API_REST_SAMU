@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import db from "../db/connection";
+import Cometido from "./cometido";
 import Funcionario from "./funcionario";
 
 const Tripulacion = db.define('tripulacionCometido', {
@@ -19,5 +20,6 @@ const Tripulacion = db.define('tripulacionCometido', {
 });
 
 Tripulacion.belongsTo(Funcionario, { foreignKey: 'idFuncionario' });
+// Tripulacion.belongsTo(Cometido, { foreignKey: 'idCometido', as: 'Cometido' });
 
 export default Tripulacion;

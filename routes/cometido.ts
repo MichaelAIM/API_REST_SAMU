@@ -1,10 +1,11 @@
 import { Router } from "express";
-import { deleteCometido, getCometidos, postCometido, putCometido, getCometido, getLogCometidosDia } from "../controller/cometidoController";
+import { deleteCometido, getCometidos, postCometido, putCometido, getCometido, getLogCometidosDia, getCometidosDisponibles } from "../controller/cometidoController";
 import { validarJWT } from "../middlewares/validarJWT";
 
 const router = Router();
 
 router.get('/',[ validarJWT ], getCometidos);
+router.get('/disponibles',[ validarJWT ], getCometidosDisponibles);
 router.get('/:id',[ validarJWT ], getCometido);
 router.get('/Turno/dia',[ validarJWT ], getLogCometidosDia);
 router.post('/',[ validarJWT ], postCometido);

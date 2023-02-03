@@ -13,6 +13,7 @@ import dapRoutes from '../routes/dap';
 import pacienteRoutes from '../routes/paciente';
 import funcionarioRoutes from '../routes/funcionario';
 import authRoutes from '../routes/auth';
+import Tripulacion from '../routes/tripulacionCometido';
 
 class Server {
     private app: Application;
@@ -20,13 +21,14 @@ class Server {
     private port:string;
     private apiPaths = {
         solicitudes        : '/api/solicitud',
-        ambulancias        : '/api/ambulancia',
-        triputacionTurno   : '/api/triputacionTurno',
-        turno              : '/api/Turno',
-        qtr                : '/api/Qtr',
         cometidos          : '/api/cometidos',
+        ambulancias        : '/api/ambulancia',
+        turno              : '/api/Turno',
+        triputacionTurno   : '/api/triputacionTurno',
         dap                : '/api/daps',
+        qtr                : '/api/Qtr',
         paciente           : '/api/paciente',
+        Tripulacion        : '/api/Tripulacion',
         funcionario        : '/api/funcionario',
         auth               : '/api/auth'
     }
@@ -54,6 +56,7 @@ class Server {
         this.app.use( this.apiPaths.dap, dapRoutes);
         this.app.use( this.apiPaths.paciente, pacienteRoutes);
         this.app.use( this.apiPaths.funcionario, funcionarioRoutes);
+        this.app.use( this.apiPaths.Tripulacion, Tripulacion);
         this.app.use( this.apiPaths.auth, authRoutes);
     }
 
