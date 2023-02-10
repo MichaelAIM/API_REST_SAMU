@@ -58,6 +58,26 @@ export const postTripulacionTurno = ( req: Request, res: Response) => {
     }
 }
 
+export const postAllripulacionTurno = async( req: Request, res: Response) => {
+    const { body } = req;
+    try {
+        for (let i = 0; i < body.tripulacion.length; i++) {
+            const solicitud = await TripTurno.findByPk(body.tripulacion[i].idTrip);
+            if(solicitud){
+                await solicitud.update({idAmbulancia:body.tripulacion[i].idAmbulancia});      
+            }
+        }
+        res.json({
+            msg: 'Post tripolación',
+        }); 
+    } catch (error) {
+        res.status(500).json({
+            msg: 'Error! hable con el administrador.'
+        });    
+    }
+}
+
+
 export const putTripulacionTurno = ( req: Request, res: Response) => {
     const { id } = req.params;
     const { body } = req;

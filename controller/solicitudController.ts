@@ -163,7 +163,6 @@ export const putSolicitud = async( req: Request, res: Response) => {
                 msg: 'No existe una solicitud con la id ' + id
             });
         }
-
         await solicitud.update(body);
         res.json( solicitud );
 

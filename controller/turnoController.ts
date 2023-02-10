@@ -68,7 +68,7 @@ export const postTurno = async( req: Request, res: Response) => {
         }
         const nuevoTurno:any = await Turno.create( { responsable: body.resp } );
         for (let i = 0; i < body.funcTurno.length; i++) {
-            let element = await tripulacionTurno.create({idTurno:nuevoTurno.id, idFuncionario: body.funcTurno[i].idFuncionario, idTipoFuncionario: body.funcTurno[i].idTipoFuncionario});
+            let element = await tripulacionTurno.create({idTurno:nuevoTurno.id, idFuncionario: body.funcTurno[i].idFuncionario, idTipoFuncionario: body.funcTurno[i].idTipoFuncionario, idAmbulancia: body.funcTurno[i].idAmbulancia});
         }
         res.json({
             msg: 'Post Ambulancias',
