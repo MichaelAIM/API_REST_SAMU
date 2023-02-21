@@ -22,10 +22,14 @@ export const getTurnoDisponible = async( req: Request, res: Response) => {
         where:{
             estadoId:1
         },
+        limit:1,
+        order:[
+            ['id', 'DESC']
+        ],
         include:[
             {
                 model: tripulacionTurno,
-                required: true,
+                required: false,
                 include:[
                     {
                         model:Funcionario,
