@@ -34,3 +34,31 @@ export const login = async( req: Request, res: Response) => {
         });  
     }
 }
+
+export const loginApp = async( req: Request, res: Response) => {
+    const { password } = req.params;
+    try {
+        const funcionario:any = await Funcionario.findOne({
+            where: {
+                estado: 1,
+                password
+            },
+        });
+        if(!funcionario){
+            return res.status(400).json({
+                msg: "el funcionario no existe"
+            });
+        }
+        
+        const token = await generarJWT(funcionario.id);
+        res.json({
+            funcionario,
+            token
+        });    
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            msg: 'Error! hable con el administrador.'
+        });  
+    }
+}

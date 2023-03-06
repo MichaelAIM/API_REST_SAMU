@@ -101,7 +101,7 @@ export const postCometido = async( req: Request, res: Response) => {
             await ambulancia.update({ despacho: 1 });
             const paciente:any = await Paciente.create({ nombre: body.nombrePaciente });
             const dap:any = await Dap.create({ idSolicitud: body.idSolicitud, idPaciente: paciente.id });
-            const cometido:any = await Cometido.create({ idSolicitud: body.idSolicitud, idDap: dap.id, idAmbulancia: body.idAmbulancia, idTurno: ultimoCometido.id });
+            const cometido:any = await Cometido.create({ idSolicitud: body.idSolicitud, idDap: dap.id, idAmbulancia: body.idAmbulancia, idTurno: ultimoCometido.id, create_por: body.resp});
             for (let i = 0; i < body.tripulacion.length; i++) {
                 await Tripulacion.create({ idCometido: cometido.id, idFuncionario: body.tripulacion[i].idFuncionario, idTipoFuncionario: body.tripulacion[i].idTipoFuncionario, idTripTurno:body.tripulacion[i].id});
                 let tripTurno:any = await TripulacionTurno.findByPk(body.tripulacion[i].id);    

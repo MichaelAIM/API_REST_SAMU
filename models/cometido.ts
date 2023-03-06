@@ -22,6 +22,9 @@ const Cometido = db.define('Cometido', {
     closedAt:{
         type: DataTypes.DATE 
     },
+    create_por:{
+        type: DataTypes.INTEGER
+    },
     closed_por:{
         type: DataTypes.INTEGER
     }
